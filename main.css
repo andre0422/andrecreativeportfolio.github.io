@@ -316,7 +316,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 150vh;
     color: white;
     padding: 20px;
     background-color: black;
@@ -478,7 +478,7 @@ img {
 
 .entry {
     display: flex;
-    height: 100vh;
+    height: 170vh;
     width: auto;
     padding: 10px;
     background-color: black;
@@ -506,7 +506,7 @@ img {
 .framing-problem {
     display: flex;
     justify-content: center;
-    height: 120vh;
+    /* height: 120vh; */
 }
 
 .front {
@@ -521,17 +521,17 @@ img {
 }
 
 .HMW {
-    height: 170vh;
+    /* height: 170vh; */
     Width: auto;
     padding: 10px;
 }
 
 .toast {
-    height: 200vh;
+    /* height: 200vh; */
 }
 
 .ideate {
-    height: 200vh;
+    /* height: 200vh; */
 }
 
 .project {
@@ -570,7 +570,7 @@ th, td {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    /* height: 100vh; */
     background-color: black;
     color: white;
 }
@@ -622,7 +622,7 @@ th, td {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 170vh;
     background-color: black;
     color: white;
 }
