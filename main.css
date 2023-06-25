@@ -1,0 +1,793 @@
+* { /*EXTREMELY IMPORTANT */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --primary-color: rgba(0, 0, 0, 0.90); /*this controls the transparency of the image in the showcase:before class*/
+    --overlay-color: rgba(100, 94, 0, 0.95); /*last value is the opacity*/
+    --menu-speed: 0.75s;
+}
+
+body {
+    width: 100%;
+    font-family: 'Be Vietnam', sans-serif;
+    background: black;
+}
+
+/*new hamburger */
+
+.menu-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.menu-wrap .toggler {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2; 
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+}
+
+.menu-wrap .hamburger {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 60px;
+    height: 60px;
+    padding: 1rem;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* HAMBURGER MIDDLE LINE */
+
+.menu-wrap .hamburger > div{ 
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+}
+/* HAMBURGER TOP AND BOTTOM LINE */
+.menu-wrap .hamburger > div:before,
+.menu-wrap .hamburger > div:after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: -10px; /*moves both lines above the original line */
+    width: 100%;
+    height: 2px;
+    background: inherit;
+}
+/* HAMBURGER MOVES LINE DOWN */
+.menu-wrap .hamburger > div:after {
+    top: 10px; /*moves the other line to the bottom */
+}
+
+/* Toggler Animate */
+.menu-wrap .toggler:checked + .hamburger > div {
+    transform: rotate(135deg);
+}
+
+/* Animation into X */
+.menu-wrap .toggler:checked + .hamburger > div:before, 
+.menu-wrap .toggler:checked + .hamburger > div:after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+/* Rotate on hover when checked */
+
+.menu-wrap .toggler:checked:hover + .hamburger > div {
+    transform: rotate(225deg);
+}
+
+/* Show Menu */
+.menu-wrap .toggler:checked ~ .menu {
+    visibility: visible;   
+}
+.menu-wrap .toggler:checked ~ .menu > div {
+    transform: scale(1);
+    transition-duration: var(--menu-speed);
+}
+
+.menu-wrap .toggler:checked ~ .menu > div > div {
+    opacity: 1;
+    transition: opacity 0.4 ease;
+}
+
+.menu-wrap .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden; 
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#item {
+    cursor: pointer;
+}
+
+
+.menu-wrap .menu > div {
+    background: var(--overlay-color);
+    border-radius: 50%;
+    width: 200vw;
+    height: 200vw;
+    display: flex;
+    flex: none; 
+    align-items: center;
+    justify-content: center;
+    transform: scale(0); 
+    transition: all 0.4s ease;
+}
+
+.menu-wrap .menu > div > div {
+    text-align: center;
+    max-width: 90vw;
+    max-height: 100vh;
+    opacity: 0; 
+    transition: opacity 0.4s ease;
+}
+
+.menu-wrap .menu > div > div > ul > li {
+    list-style: none;
+    color: whitesmoke;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.menu-wrap .menu > div > div > ul > li > a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.4s ease;
+}
+.Landing-container{
+    background: var(--primary-color);
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.back-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    height: 100vh;
+    margin: 0;
+}
+.title-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+.Greeting-container {
+    font-size: 1.5em;
+    color: #A5A1A1;
+    padding-bottom: 20px;
+}
+.Name-container {
+    font-size: 4em;
+    font-weight: bolder;
+} 
+.Description-container {
+    font-size: 4em;
+    padding-bottom: 20px;
+}
+.sub-description-container {
+    font-size: 1.5em;
+    color: #A5A1A1;
+}
+.bottom-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    border: 1px solid white;
+}
+.Email-container {
+    display: flex;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    width: 5%;
+    font-size: 1.0em;
+    position: fixed;
+}
+.Email-wrapper {
+    display: flex;
+    margin-right: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.Social-container {
+    display: flex;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    width: 5%;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+}
+.Email {
+    text-decoration: none;
+    color: white;
+}
+.fab {
+    padding-bottom: 20px;
+    font-size: 1.2em;
+    text-decoration: none;
+    color: white;
+}
+.fab:hover {
+    color: #D8D200;
+    cursor: pointer;
+    transform: translateY(-2.0px);
+    transition: ease-in-out 0.2s;
+}
+.Email:hover {
+    color: #D8D200;
+    cursor: pointer;
+    transform: translateX(2.0px);
+    transition: ease-in-out 0.2s;
+}
+
+
+.instructions-container{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    padding: 20px;
+    background-color: black;
+}
+.instructions-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 0px;
+    width: 40%;
+    height: auto;
+
+}
+.instructions-title {
+    width: 50%;
+    padding-bottom: 20px;
+    font-size: 35px;
+    color: #D8D200;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    animation: animation;
+}
+.Biography-container {
+    width: 70%;
+    height: 100%;
+    font-size: 1.0em;
+}
+.active {
+    color: white;
+    transform: translateY(-2.0px);
+    transition: ease-in-out 0.3s;
+    cursor: default;
+}
+
+.carousel {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+.carousel > ul {
+    list-style: none;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: 200ms opacity ease-in-out;
+    transition-delay: 200ms;
+
+    display: flex;
+    height: 100vh;
+    width: auto;
+    padding: 10px;
+    background-color: black;
+    color: white;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.slide[data-active] {
+    opacity: 1;
+    transition-delay: 0;
+}
+.slide > img {
+    display: block;
+    width: 60%;
+    height: 60%;
+    object-fit: cover;
+    object-position: center;
+    border: 4px solid black;
+}
+
+#e-map {
+}
+
+.project-two {
+    padding: 0;
+}
+
+/* Card-flip animation for Framing the problem */
+.card-container {
+    margin-top: 50px;
+    width: 800px;
+    height: 400px;
+    perspective: 800px;
+    display: flex;
+
+}
+
+.card-container:hover > .card {
+    cursor: pointer;
+    transform: rotateY(180deg);
+}
+
+.card {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    transition: transform 1500ms;
+    transform-style: preserve-3d;
+}
+
+.front, 
+.back {
+    height: 100%;
+    width: 100%;
+    border-radius: 2rem;
+    box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.front {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+}
+
+.back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.0rem;
+    color: white;
+    font-weight: bold
+}
+
+/* card-flip animation ends */
+
+.slide[data-active] {
+    opacity: 1;
+}
+
+.carousel-button {
+    position: absolute;
+    z-index: 2;
+    background: none;
+    border: none;
+    font-size: 4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, .5);
+    cursor: pointer;
+    border-radius: .25rem;
+    padding: 0 .5rem;
+    background-color: rgba(0, 0, 0, .1);
+}
+.carousel-button:hover,
+.carousel-button:focus {
+    color: white;
+    background-color: rgba(0, 0, 0, .1);
+}
+.carousel-button:focus {
+    outline: 1px solid black;
+}
+
+.carousel-button.prev {
+    left: 1rem;
+}
+
+.carousel-button.next {
+    right: 1rem;
+}
+
+
+
+.entry {
+    display: flex;
+    height: 100vh;
+    width: auto;
+    padding: 10px;
+    background-color: black;
+    color: white;
+}
+.entry-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100%;
+}
+.entry-heading-container {
+    width: 50%;
+    padding-bottom: 20px;
+    font-size: 35px;
+    color: #D8D200;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.framing-problem {
+    display: flex;
+    justify-content: center;
+}
+
+.framing-problem {
+    display: flex;
+    justify-content: center;
+}
+
+.first-two-projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.HMW {
+    height: 220vh;
+    Width: auto;
+    padding: 10px;
+}
+
+.toast {
+    height: 220vh;
+}
+
+.ideate {
+    height: 220vh;
+}
+
+.project {
+    padding: 20px;
+    border: 1px solid white;
+    color: white;
+    text-decoration: none;
+}
+
+.project-four {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    color: white;
+    text-decoration: none;
+    border: initial;
+}
+
+.project.project-four:hover {
+    background-color: initial;
+    color: initial; 
+    transition: initial;
+    cursor: pointer;
+}
+
+
+th, td {
+    padding: 8px;
+    text-align: center;
+}
+
+
+.Contact-me-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: black;
+    color: white;
+}
+.contact-me-title-container {
+    border: 1px solid white;
+    padding: 15px;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+
+    color:  #D8D200;
+}
+.contact-info-container {
+    margin-bottom: 10px;
+    padding: 15px;
+    font-size: 1.2em;
+    width: 40%;
+    text-align: center;
+}
+.contact-me-button {
+    border: 1px solid white;
+    border-radius: 40px;
+    padding: 22px;
+    background-color:  #252323;
+    color: white;
+    font-family: 'Be Vietnam', sans-serif;
+    font-weight: bold;
+}
+#contact-me-link {
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+    width: 100%;
+}
+
+.contact-me-button:hover {
+    background-color: white;
+    color:#252323; 
+    transition: ease-in-out 0.2s;
+    cursor: pointer;
+}
+.contact-me-button:hover > #contact-me-link {
+    color: #252323; 
+}
+
+
+
+.resume-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: black;
+    color: white;
+}
+.resume-title-container {
+    width: 50%;
+    text-align: center;
+    padding-bottom: 20px;
+    font-size: 35px;
+    color: #D8D200;
+}
+.resume-info-container {
+    margin-bottom: 10px;
+    padding: 15px;
+    font-size: 1.2em;
+    width: 40%;
+    text-align: center;
+}
+
+.Credits-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: black;
+    font-size: 0.7em;
+    margin-bottom: 25px;
+}
+.Social-container-footer {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.fab:hover {
+    color: #D8D200;
+    cursor: pointer;
+    transform: translateY(-2.0px);
+    transition: ease-in-out 0.2s;
+}
+.Credits-github-link {
+    border: none;
+    background-color: black;
+    color: #D1D0D0;
+    font-family: 'Be Vietnam', sans-serif;
+}
+.Credits-github-link:hover {
+    color: #D8D200;
+    cursor: pointer;
+    transition: ease-in-out 0.2s;
+    transform: translateY(-2.0px);
+    transition: ease-in-out 0.2s;
+}
+
+
+
+/*MOBILE RESPONSIVENESS*/
+@media (max-width: 1200px) {
+    .Email-container {
+        display: none;
+    }
+    .Social-container {
+        display: none;
+    }
+    .fab {
+        margin-bottom: 10px;
+        padding: 10px;
+        font-size: 1.2em;
+        color: white;
+    }
+    .Social-container-footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+@media (max-height: 800) {
+    .entry {
+        height: 400vh;
+    }
+}
+
+@media (max-width: 900px) {
+    .nav-container {
+        display: none;
+    }
+    .menu-wrap {
+        display: initial;
+    }
+    .title-wrapper {
+        width: 90%;
+    }
+    .resume-container{    
+        flex-direction: column;
+        padding: 20px;
+    }
+    .resume-info-container {
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 60px;
+    }
+    .About-me-title {
+        font-size: 2em;
+    }
+    .resume-title {
+        font-size: 2em;
+    }
+    img {
+        width: 100%;
+        height: auto; 
+    }
+    .Biography-container {
+        width: 100%;
+        height: 100%;
+        font-size: 0.9em;
+        line-height: 1.6em;
+    }
+    .project {
+        margin: 10px;
+    }
+    .contact-me-title-container {
+        font-size: 2.0em;
+    }
+    .contact-info-container {
+        width: 90%;
+    }
+    .HMW {
+        height: 340vh;
+    }
+    .ideate {
+        height: 340vh;
+    }
+    .wish {
+        height: 300vh;
+    }
+    .reverse-brainstorming {
+        height: 270vh;
+    }
+
+}
+
+/*additional mobile responsiveness - fixed top padding for 
+projects and resume sections */
+
+@media (max-width: 450px) {
+
+    .projects-container {
+        margin-top: 200px;
+    }
+    .resume-container {
+        margin-top: 200px;
+    }
+    .About-me-container {
+        margin-top: 200px;
+    }
+    .Greeting-container {
+        font-size: 1.2em;
+    }
+    .Name-container {
+        font-size: 3.5em;
+    } 
+    .Description-container {
+        font-size: 3.5em;
+    }
+    .sub-description-container {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 360px) {
+
+    .projects-container {
+        margin-top: 200px;
+    }
+    .resume-container {
+        margin-top: 200px;
+    }
+    .About-me-container {
+        margin-top: 200px;
+    }
+    .Greeting-container {
+        font-size: 1.0em;
+    }
+    .Name-container {
+        font-size: 3.1em;
+    } 
+    .Description-container {
+        font-size: 3.1em;
+    }
+    .sub-description-container {
+        font-size: 1.0em;
+    }
+}
+
+h3 {
+    padding-bottom: 10px;
+}
+
+  
