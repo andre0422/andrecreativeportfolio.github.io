@@ -8,8 +8,8 @@ html {
 }
 
 :root {
-    --primary-color: rgba(0, 0, 0, 0.90); /*this controls the transparency of the image in the showcase:before class*/
-    --overlay-color: rgba(100, 94, 0, 0.95); /*last value is the opacity*/
+    --primary-color: rgba(0, 0, 0, 0.55); /*this controls the transparency of the image in the showcase:before class*/
+    --overlay-color: rgba(0, 0, 0, 0.85); /*last value is the opacity*/
     --menu-speed: 0.75s;
 }
 
@@ -155,7 +155,8 @@ body {
 .menu-wrap .menu > div > div > ul > li {
     list-style: none;
     color: whitesmoke;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
     padding: 1rem;
 }
 
@@ -192,6 +193,53 @@ body {
     flex-direction: column;
     width: 60%;
 }
+
+
+
+/*new landing page */
+
+.showcase {
+    background-color: var(--primary-color);
+    color: whitesmoke;
+    height: 100vh;
+    position: relative; /*because the overlay will be positioned in front of this */
+}
+
+.showcase:before {
+    content: '';
+    background-image: url('title-page.gif');
+    background-repeat: no-repeat;
+    background-position: 40% 60%; 
+    background-attachment: fixed;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.showcase .showcase-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+.showcase h1 {
+    font-size: 4rem;
+}
+.showcase p {
+    font-size: 1.2rem;
+}
+
+
+
+
+
+
+
 .Greeting-container {
     font-size: 1.5em;
     color: #A5A1A1;
@@ -307,7 +355,7 @@ img {
 }
 
 .carousel {
-    width: 100vw;
+    width: 80vw;
     height: 100vh;
     position: relative;
 }
@@ -346,67 +394,50 @@ img {
     border: 4px solid black;
 }
 
-#e-map {
-}
+/*New styling for Week 5 carousel */
 
-.project-two {
-    padding: 0;
-}
-
-/* Card-flip animation for Framing the problem */
-.card-container {
-    margin-top: 50px;
-    width: 800px;
-    height: 400px;
-    perspective: 800px;
-    display: flex;
-
-}
-
-.card-container:hover > .card {
-    cursor: pointer;
-    transform: rotateY(180deg);
-}
-
-.card {
-    height: 100%;
-    width: 100%;
-    position: relative;
-    transition: transform 1500ms;
-    transform-style: preserve-3d;
-}
-
-.front, 
-.back {
-    height: 100%;
-    width: 100%;
-    border-radius: 2rem;
-    box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
+.slide {
     position: absolute;
-    backface-visibility: hidden;
-}
+    inset: 0;
+    opacity: 0;
+    transition: 200ms opacity ease-in-out;
+    transition-delay: 200ms;
 
-.front {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 100vh;
+    width: auto;
+    padding: 10px;
     background-color: black;
     color: white;
-}
 
-.back {
-    transform: rotateY(180deg);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.slide[data-active] {
+    opacity: 1;
+    transition-delay: 0;
+}                       
+
+
+.slide-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
-    font-size: 1.0rem;
-    color: white;
-    font-weight: bold
+    text-align: center;
+    width: 60%;
+    max-height: 60%;
+    object-fit: cover;
+    object-position: center;
+    /* border: 4px solid white; */
 }
 
-/* card-flip animation ends */
+
+/*new styling for Week 5 ends */
+
+
+
 
 .slide[data-active] {
     opacity: 1;
@@ -417,13 +448,13 @@ img {
     z-index: 2;
     background: none;
     border: none;
-    font-size: 4rem;
+    font-size: 2rem;
     top: 50%;
     transform: translateY(-50%);
     color: rgba(255, 255, 255, .5);
     cursor: pointer;
     border-radius: .25rem;
-    padding: 0 .5rem;
+    padding: 0 1.4rem;
     background-color: rgba(0, 0, 0, .1);
 }
 .carousel-button:hover,
@@ -475,11 +506,11 @@ img {
 .framing-problem {
     display: flex;
     justify-content: center;
+    height: 120vh;
 }
 
-.framing-problem {
-    display: flex;
-    justify-content: center;
+.front {
+    color: #D8D200;
 }
 
 .first-two-projects {
@@ -490,17 +521,17 @@ img {
 }
 
 .HMW {
-    height: 220vh;
+    height: 170vh;
     Width: auto;
     padding: 10px;
 }
 
 .toast {
-    height: 220vh;
+    height: 200vh;
 }
 
 .ideate {
-    height: 220vh;
+    height: 200vh;
 }
 
 .project {
@@ -510,7 +541,7 @@ img {
     text-decoration: none;
 }
 
-.project-four {
+/* .project-four {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -518,7 +549,7 @@ img {
     color: white;
     text-decoration: none;
     border: initial;
-}
+} */
 
 .project.project-four:hover {
     background-color: initial;
@@ -666,6 +697,38 @@ th, td {
         justify-content: center;
         width: 100%;
     }
+    .menu-wrap .menu > div > div > ul > li {
+    font-size: 0.85rem;
+    padding: 0.6rem;
+    }
+
+    .personas {
+        height: 200vh;
+    }
+    .HMW {
+        height: 340vh;
+    }
+    .ideate {
+        height: 340vh;
+    }
+    .wish {
+        height: 300vh;
+    }
+    .reverse-brainstorming {
+        height: 270vh;
+    }
+    .week-five {
+        height: 270vh;
+    }
+    .resume-container {
+        height: 270vh;
+    }
+    .framing-problem {
+        height: 270vh;
+    }
+    .slide-wrapper {
+        overflow: auto;
+    }
 }
 
 @media (max-height: 800) {
@@ -717,18 +780,6 @@ th, td {
     }
     .contact-info-container {
         width: 90%;
-    }
-    .HMW {
-        height: 340vh;
-    }
-    .ideate {
-        height: 340vh;
-    }
-    .wish {
-        height: 300vh;
-    }
-    .reverse-brainstorming {
-        height: 270vh;
     }
 
 }
@@ -789,5 +840,13 @@ projects and resume sections */
 h3 {
     padding-bottom: 10px;
 }
-
+p {
+    padding-bottom: 5px;
+}
+li {
+    padding: 2px;
+}
+.back {
+    margin: 1.2rem;
+}
   
